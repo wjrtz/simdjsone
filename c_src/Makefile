@@ -71,11 +71,11 @@ info:
 simdjson.h simdjson.cpp:
 	wget -q https://raw.githubusercontent.com/simdjson/simdjson/master/singleheader/$@
 
-$(SO_OUTPUT): $(BASEDIR)/priv $(OBJECTS)
+$(SO_OUTPUT): $(PRIV_DIR) $(OBJECTS)
 	$(CXX) $(OBJECTS) $(LDFLAGS) -o $(SO_OUTPUT)
 
-$(BASEDIR)/priv:
-	@mkdir -p $(BASEDIR)/priv/
+$(PRIV_DIR):
+	@mkdir -p $(PRIV_DIR)
 
 simdjson.o: simdjson.cpp simdjson.h
 	$(COMPILE_CPP) -c $(OUTPUT_OPTION) $<
