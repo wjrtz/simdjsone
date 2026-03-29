@@ -60,7 +60,7 @@ defmodule Mix.Tasks.Compile.Priv do
 
   @impl true
   def run(_args) do
-    outdir = Keyword.get(Mix.Project.config(), :app_path, File.cwd!)
+    outdir = Mix.Project.app_path()
 
     System.cmd("make", ["nif"], [env: [{"REBAR_BARE_COMPILER_OUTPUT_DIR", outdir}]])
     |> elem(0)
